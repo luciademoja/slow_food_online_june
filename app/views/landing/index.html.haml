@@ -1,21 +1,54 @@
-%h1 What do you feel like tonight?
-%ul
-  %li Asian
-  %li Italian
-  %li Greek
-%div#location_form
-  %form{action: ""}
-    Where are you:
-    %input{name: "location", placeholder: "Type in your location", type: "text"}
-    %input{type: "submit", value: "Submit"}
-  %br
+.orbit{'aria-label': 'Slow Food Online', 'data-orbit': "", role: "region"}
+  %ul.orbit-container
+    %button.orbit-previous{"aria-label" => "previous"}
+      %span.show-for-sr> Previous Slide
+      \◀
+    %button.orbit-next{"aria-label" => "next"}
+      %span.show-for-sr> Next Slide
+      \▶
+    %li.orbit-slide.is-active
+      =image_tag'Asian.png'
+    %li.orbit-slide
+      =image_tag'chicken.png'
+    %li.orbit-slide
+      =image_tag'pizza.png', width: '2000'
+    %li.orbit-slide
+      =image_tag'kebab.png'
+.row
+  .medium-4.columns
+    %h2
+      List of restaurants
+      .row.small-up-4
+      .column
+        %img.thumbnail{src: "http://placehold.it/250x150"}
+        %h5 Asian Restaurant Name
+      .column
+        %img.thumbnail{src: "http://placehold.it/250x150"}
+        %h5 Italian Restaurant Name
+      .column
+        %img.thumbnail{src: "http://placehold.it/250x150"}
+        %h5 Restaurant Name
 
-#map{data: {test: {env: "#{Rails.env.test?}"}}}
-  %h2 Map
-%h2
-  List of restaurants
-%ul
-  %li Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+  .medium-8.columns
+    %h2 What do you feel like tonight?
+    %div
+      %form{action: ""}
+        %select
+          %option{:value => ""} Select your option
+          %option{:value => "Asian"} Asian
+          %option{:value => "Italian"} Italian
+          %option{:value => "Greek"} Greek
+          %option{:value => "Sushi"} Sushi
+    %div#location_form
+      %form{action: ""}
+        Where are you:
+        %input{name: "location", placeholder: "Type in your location", type: "text",}
+        %input#submit.button.expanded{type: "submit", value: "Submit"}
+      %br
+
+    #map{data: {test: {env: "#{Rails.env.test?}"}}}
+      %h2 Map
+
 
 %script(src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDLlFOiBK4ncqm_t4-QPo_-VmhD84MNhHc&libraries=places&callback=initMap" async defer)
 = javascript_include_tag 'gmaps'
