@@ -3,7 +3,8 @@ Feature: As any user
   I need to be able to logout
 
   Background:
-    Given I am logged in as a user of the system
+    Given there is a user with email "admin@random.com"
+    And I am logged in as "admin@random.com"
     And I am on the "home" page
 
   Scenario: Logout a user

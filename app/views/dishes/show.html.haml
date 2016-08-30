@@ -10,7 +10,7 @@
     %p.left
       = ['Price:', @dish.price, 'kr'].join(' ') unless @dish.price.nil?
     %p
-      = link_to 'Order', '#', class: 'button expanded'
+      = link_to 'Order', menu_dish_add_to_order_path(@menu, @dish), class: 'button expanded', method: :post
     %p= ['Allergy info:', @dish.allergy_info].join(' ') unless @dish.allergy_info.nil?
     %p= ['Ingredients:', @dish.ingredients].join(' ') unless @dish.ingredients.nil?
     %p= ['Calories:', @dish.calories, 'Kcal'].join(' ') unless @dish.calories.nil?

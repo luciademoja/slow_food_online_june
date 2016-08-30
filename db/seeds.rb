@@ -1,6 +1,6 @@
 klasses = [Dish, Menu, Restaurant, User]
 old_counts = klasses.map(&:count)
-should_prompt = old_counts.min > 0
+should_prompt = old_counts.min  0
 
 def yes_no(prompt)
   print [prompt.blue, 'yes(y)/no(n): '].join(' ')
@@ -45,8 +45,9 @@ end
 def add_dish(number, menu, restaurant)
   price = rand(20..60)
   prefix = restaurant.cuisine
-  Dish.create(name: "#{prefix} Dish#{number}",
+  Dish.create(name: "#{prefix} Dish #{number}",
               price: price,
+              description: "A great #{restaurant.cuisine} dish!",
               menu: menu,
               category: Dish::CATEGORIES.sample)
 end
