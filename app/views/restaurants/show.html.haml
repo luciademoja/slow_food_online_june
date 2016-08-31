@@ -1,0 +1,21 @@
+.row
+  .large-12.columns
+    %h3
+      = @restaurant.name
+      %p= @restaurant.description
+      %p= @restaurant.address
+      %p= @restaurant.delivery_radius
+      %p= @restaurant.phone_number
+      %p= @restaurant.email_address
+.row
+  .large-3.columns
+    %p= @restaurant.cuisine
+    %p= @menu.name
+    %p= @dish.description
+    %p= ['Allergy info:', @dish.allergy_info].join(' ') unless @dish.allergy_info.nil?
+    %p= ['Ingredients:', @dish.ingredients].join(' ') unless @dish.ingredients.nil?
+    %p= ['Calories:', @dish.calories, 'Kcal'].join(' ') unless @dish.calories.nil?
+    %p.left
+      = ['Price:', @dish.price, 'kr'].join(' ') unless @dish.price.nil?
+    %p
+      = link_to 'Order', '#', class: 'button expanded'
