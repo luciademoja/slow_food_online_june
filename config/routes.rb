@@ -12,4 +12,9 @@ Rails.application.routes.draw do
     end
   end
 
+  namespace :api do
+    namespace :v0 do
+      resources :ping, only: [:index], constraints: {format: /(json)/}
+    end
+  end
 end
