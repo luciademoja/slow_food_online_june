@@ -4,8 +4,8 @@ Feature: As a visitor
 
   Background:
     Given the following restaurant exists
-      | name         | description              | address            | phone_number | email_address |
-      | Asia House   | Asian food at it\'s best | 411, 26 Gothenburg | 011 555 5555 | Asia@asia.com |
+      | name         | description              |  phone_number | email_address |
+      | Asia House   | Asian food at it\'s best |  011 555 5555 | Asia@asia.com |
 
     And the following cusine for "Asia House" exsits
       | cuisine |
@@ -25,7 +25,7 @@ Feature: As a visitor
     Given I am on the "show" page for restaurant: "Asia House"
     Then show me the page
     Then I should see "Asian food at it\'s best"
-    And I should see "411, 26 Gothenburg"
+    And I should see "Holtermansgatan 10, 411 29, Gothenburg"
     And I should see "011 555 5555"
     And I should see "Asian"
     And I should see "Dinner"
