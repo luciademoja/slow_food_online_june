@@ -16,5 +16,5 @@
     %p= ['Calories:', @dish.calories, 'Kcal'].join(' ') unless @dish.calories.nil?
 
   .large-9.columns
-    = image_tag "https://placeholdit.imgix.net/~text?txtsize=30&txt=#{@dish.name}&w=500&h=500"
+    = image_tag @dish.image_url
     %p= @dish.description

@@ -1,27 +1,53 @@
-= form_for ([@menu, @dish]) do |f|
-  .field
-    = f.label :category, 'Select the category for your dish'
-    = f.select(:category, options_for_select(Dish::CATEGORIES),
-                                              include_blank: 'Select category')
-  .field
-    = f.label :name
-    = f.text_field :name
-  .field
-    = f.label :description
-    = f.text_area :description
-  .field
-    = f.label :price
-    = f.text_field :price
-  .field
-    = f.label :allergy_info
-    = f.text_area :allergy_info
-  .field
-    = f.label :ingredients
-    = f.text_area :ingredients
-  .field
-    = f.label :calories
-    = f.number_field :calories
-  .actions
-    = f.submit 'Create'
+.row
+  .large-12.medium-12.columns
+    %h3
+      Create a dish in
+      = @menu.name
+.row
+  .large-8.medium-8.columns
+    = form_for([@menu, @dish], html: {multipart: true}) do |f|
+      .field
+        = f.label :category, 'Select the category for your dish'
+        = f.select(:category, options_for_select(Dish::CATEGORIES),
+                                                  include_blank: 'Select category')
+      .field
+        = f.label :name
+        = f.text_field :name
+      .field
+        = f.label :description
+        = f.text_area :description
+      .field
+        = f.label :price
+        = f.text_field :price
+      .field
+        = f.label :allergy_info
+        = f.text_area :allergy_info
+      .field
+        = f.label :ingredients
+        = f.text_area :ingredients
+      .field
+        = f.label :calories
+        = f.number_field :calories
+      .field
+        = f.label :image
+        = f.file_field :image, onchange: 'readAndPreviewImage(this);'
+      .actions
+        = f.submit 'Create', class: 'button expand'
+  .large-4.medium-4.columns
+    - if @dish.image?
+      = image_tag(@dish.image_url)
+    - else
+      = image_tag('', id: 'preview', style: 'display: none;')
 
-
+:javascript
+  function readAndPreviewImage(input) {
+        if (input.files && input.files[0]) {
+          var reader = new FileReader();
+          reader.onload = function (e) {
+            $('#preview')
+              .fadeIn( "slow" )
+              .attr('src', e.target.result);
+          };
+          reader.readAsDataURL(input.files[0]);
+        }
+      }

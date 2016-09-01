@@ -18,8 +18,11 @@ Then(/^I should be on the "([^"]*)" page$/) do |expected_page|
       path = new_restaurant_path
     when 'create dish' then
       path = @menu ? new_menu_dish_path(@menu) : new_menu_dish_path(@restaurant.menus.first)
-    when 'dashboard'
+    when 'dashboard' then
       path = dashboard_path(@restaurant)
+    when 'dish show' then
+      @dish = @menu.dishes.last
+      path = menu_dish_path(@menu, @dish)
     else
       raise 'You have not defined a path yet'
   end

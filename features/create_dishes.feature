@@ -1,3 +1,4 @@
+@javascript
 Feature: As a system user
   So that I can fill my menu with dishes
   I want to be able to create dishes
@@ -10,6 +11,7 @@ Feature: As a system user
 
   Scenario: Create a dish
     And I fill "Name" with "Dish Name"
+    And I add a dish image
     And I fill "Price" with "3.00"
     And I fill "Description" with "My description"
     And I fill "Allergy info" with "Peanuts"
@@ -17,7 +19,7 @@ Feature: As a system user
     And I fill "Calories" with "429"
     And I select "Starter" from "Select the category for your dish"
     And I click "Create"
-    Then I should be on the "home" page
+    Then I should be on the "dish show" page
     And I should see "Dish Name created successfully"
 
   Scenario: Reject when missing required values

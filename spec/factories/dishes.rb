@@ -7,6 +7,7 @@ FactoryGirl.define do
     ingredients 'Meat'
     calories '500'
     category 'Starter'
+    image { File.new("#{Rails.root}/spec/fixtures/pizza-300x300.jpg") } 
     association :menu
   end
 end

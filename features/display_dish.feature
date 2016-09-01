@@ -1,4 +1,4 @@
-#@javascript
+@javascript
 Feature: As a System user
   In order to make it easier to select a dish
   I want to be able to create a full presentation of the dish
@@ -25,6 +25,7 @@ Feature: As a System user
     Given I am on the "show" page for dish: "Capricciosa"
     Then I should see "Capricciosa"
     And I should see "Price: 50.0 kr"
+    Then I should see image "pizza-300x300.jpg"
 
   Scenario: Display dish info about Margharita
     Given I am on the "show" page for dish: "Margharita"
@@ -55,4 +56,3 @@ Feature: As a System user
     And I should see "Ingredients: Tomato, Cheese, Shrimps, Mussels"
     And I should see "Allergy info: Gluten, Lactose"
     And I should see "Delicious pizza with fruits of the sea!"
-
