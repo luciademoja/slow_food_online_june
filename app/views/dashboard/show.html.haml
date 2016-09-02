@@ -1,25 +1,25 @@
 .row
   .large-12.columns
-    %h3
+    %h2
       Dashboard for
       = @restaurant.name
-.row
-  .large-3.columns#dash_links
-    %ul{style: 'list-style-type: none;'}
-      %li
-        = link_to 'Create a menu', new_menu_path, class: 'button expanded'
-      - if @restaurant.menus.any?
-        %li
-          = link_to "Add dish to #{@restaurant.menus.first.name}", new_menu_dish_path(@restaurant.menus.first), class: 'button expanded'
-      %li
-        = link_to 'Edit details', edit_restaurant_path(@restaurant), class: 'button expanded'
-      %li
-        = link_to 'My orders', '#', class: 'button expanded'
-      %li
-        = link_to 'Security settings', '#', class: 'button expanded'
 
+%ul.sub-nav.menu{role: "navigation", title: "Filter Menu List"}
+  %li.active
+    %span.show-for-sr You're viewing
+    %li
+      = link_to 'Create a menu', new_menu_path
+    - if @restaurant.menus.any?
+      %li
+        = link_to "Add dish to #{@restaurant.menus.first.name}", new_menu_dish_path(@restaurant.menus.first)
+    %li
+      = link_to 'Edit details', edit_restaurant_path(@restaurant)
+    %li
+      = link_to 'My orders', '#'
+    %li
+      = link_to 'Security settings', '#'
 
-  .large-9.columns.dashboard-content
+  .large-12.columns.dashboard-content
     %p
       Hello
       = current_user.email

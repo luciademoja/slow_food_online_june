@@ -9,14 +9,14 @@
         = link_to 'Home', root_path
       - if current_user && current_user.restaurants.any?
         %li
-          %p Hello, #{current_user.email}
-        %li
           = link_to 'Dashboard', dashboard_path(current_user.restaurants.first)
         %li
           = link_to 'Logout', destroy_user_session_path, method: :delete
+        %li
+          %p.name Hello, #{current_user.email}
       - elsif current_user
         %li
-          %p Hello, #{current_user.email}
+          %p.name Hello, #{current_user.email}
         %li
           = link_to 'Create your restaurant', new_restaurant_path
         %li

@@ -1,12 +1,12 @@
+.medium-5.columns
+  = image_tag @dish.image_url
 .row
-  .large-12.columns
-    %p
-      %small
-        = @menu.name
-    %h3
+  .medium-4.columns
+    %h2
       = @dish.name
-.row
-  .large-3.columns
+    %p.small
+      = @menu.name
+    %p= @dish.description
     %p.left
       = ['Price:', @dish.price, 'kr'].join(' ') unless @dish.price.nil?
     %p
@@ -14,7 +14,3 @@
     %p= ['Allergy info:', @dish.allergy_info].join(' ') unless @dish.allergy_info.nil?
     %p= ['Ingredients:', @dish.ingredients].join(' ') unless @dish.ingredients.nil?
     %p= ['Calories:', @dish.calories, 'Kcal'].join(' ') unless @dish.calories.nil?
-
-  .large-9.columns
-    = image_tag @dish.image_url
-    %p= @dish.description
