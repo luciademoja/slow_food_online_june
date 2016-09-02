@@ -17,6 +17,7 @@ gem 'faker'
 gem 'carrierwave'
 gem 'acts_as_shopping_cart'
 gem 'rack-cors', require: 'rack/cors'
+gem 'carrierwave-aws'
 
 group :development, :test do
   gem 'pry'
@@ -31,6 +32,7 @@ group :development, :test do
   gem 'capybara-screenshot'
   gem 'launchy'
   gem 'poltergeist'
+  gem 'dotenv-rails'
 end
 
 group :development do
