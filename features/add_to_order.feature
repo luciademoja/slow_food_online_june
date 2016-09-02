@@ -44,3 +44,9 @@ Feature: As a System user
     And I click on "Order"
     Then I should have "3" items in my order
     And the subtotal should be "150"
+
+  Scenario: Display items in shopping cart
+    Given I have added items to my cart
+    And I am on the "shopping cart" page
+    Then I should see a list of items
+    And I should see "Total price: 150"
