@@ -39,6 +39,8 @@ def path(pagename)
       new_menu_path
     when 'create dish'
       new_dish_path
+    when 'shopping cart'
+      cart_path
     when 'dashboard'
       dashboard_path(@restaurant)
     else
