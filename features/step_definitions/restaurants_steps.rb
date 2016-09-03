@@ -46,4 +46,10 @@ Given(/^I have a restaurant called "([^"]*)"$/) do |name|
   @restaurant = FactoryGirl.create(:restaurant, name: name, user: @user)
 end
 
+Given(/^the following cusine for "([^"]*)" exsits$/) do |cuisine, table|
+  expect(page).to have_content cusine
+end
 
+Given(/^I am on the "([^"]*)" page for restaurant: "([^"]*)"$/) do |arg1, arg2|
+  pending # Write code here that turns the phrase above into concrete actions
+end
