@@ -1,5 +1,5 @@
 class RestaurantsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create, :edit, :update]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :show]
 
   def new
     @restaurant = Restaurant.new
@@ -9,7 +9,7 @@ class RestaurantsController < ApplicationController
     @restaurant = Restaurant.new(restaurant_params)
     @restaurant.user = current_user
     if @restaurant.save
-      redirect_to root_path
+      redirect_to restaurant_path(@restaurant)
     else
       render 'new'
     end
@@ -32,11 +32,13 @@ class RestaurantsController < ApplicationController
   end
 
   def show
-    @restaurant = Restaurant.find(params[:restaurant_id])
+    @restaurant = Restaurant.find(params[:id])
+    @menu = @restaurant.menus.find_by(id: params[:id])
+    # @dish = @menu.dishes.find_by(id: params[:id])
   end
 
   private
-  
+
   def restaurant_params
     params.require(:restaurant).permit(:name,
                                        :address,
