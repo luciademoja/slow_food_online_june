@@ -46,10 +46,19 @@ Given(/^I have a restaurant called "([^"]*)"$/) do |name|
   @restaurant = FactoryGirl.create(:restaurant, name: name, user: @user)
 end
 
-Given(/^the following cusine for "([^"]*)" exsits$/) do |cuisine, table|
-  expect(page).to have_content cusine
-end
-
-Given(/^I am on the "([^"]*)" page for restaurant: "([^"]*)"$/) do |arg1, arg2|
-  pending # Write code here that turns the phrase above into concrete actions
+# Given(/^the following cuisine for "([^"]*)" exsits$/) do |name, table|
+#   @restaurant = Restaurant.find_by(name: name)
+#   @restaurant.cuisines.each {|d| d.destroy}
+#
+#   table.hashes.each do |cuisine|
+#     FactoryGirl.create(:cuisine, cuisine.merge!(restaurant: @restaurant))
+#   end
+# end
+#
+Given(/^I am on the "([^"]*)" page for restaurant: "([^"]*)"$/) do |page, name|
+  @restaurant = Restaurant.find_by(name: name)
+  case page
+    when 'display'
+        restaurant_path(@restaurant)
+  end
 end

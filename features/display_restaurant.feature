@@ -1,17 +1,14 @@
+@javascript
 Feature: As a visitor
   In order to see the offers of a restaurant and its ability to deliver to me
   I want to be able to see these details on a Restaurant page
 
   Background:
     Given the following restaurant exists
-      | name         | description              |  phone_number | email_address |
-      | Asia House   | Asian food at it\'s best |  011 555 5555 | Asia@asia.com |
+      | name         | description              | phone_number | email_address | cuisine |
+      | Asia House   | Asian food at it\'s best | 011 555 5555 | Asia@asia.com | Chinese |
 
-    And the following cusine for "Asia House" exsits
-      | cuisine |
-      | Asian   |
-
-    And that following menus for "Asian" exist
+    And that following menus for "Asia House" exist
       | name      |
       | Dinner    |
 
@@ -22,12 +19,12 @@ Feature: As a visitor
       | Sticky sesame prawns   | King prawns, Red Chilli, Sesame Seeds         | Shell Fish      | Prawns and Asian flavours   |  95   | 200      |
 
   Scenario: Display restaurant details
-    Given I am on the "show" page for restaurant: "Asia House"
+    Given I am on the "display" page for restaurant: "Asia House"
     Then show me the page
     Then I should see "Asian food at it\'s best"
     And I should see "Holtermansgatan 10, 411 29, Gothenburg"
     And I should see "011 555 5555"
-    And I should see "Asian"
+    And I should see "Chinese"
     And I should see "Dinner"
     And I should see "Asian Ribs"
     And I should see "Pork Back Ribs, Sesame Oil, Garlic"
